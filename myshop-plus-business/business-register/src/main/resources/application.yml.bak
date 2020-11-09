@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: business-register2
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  cloud:
+    nacos:
+#      config:
+#        server-addr: 120.24.149.53:8848
+      discovery:
+        server-addr: 120.24.149.53:8848
+
+server:
+  port: 9904
+# ${random.int[9000,9999]} 随机端口
+
+dubbo:
+  scan:
+    base-packages: com.hyorin.myshop.plus.business.register.controller
+  protocol:
+    name: dubbo
+    port: 36680
+    serialization: kryo
+  registry:
+    address: nacos://120.24.149.53:8848
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: business-oauth2
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 120.24.149.53:8848
+
+dubbo:
+  scan:
+    base-packages: com.hyorin.myshop.business.oauth2.service
+  protocol:
+    name: dubbo
+    port: -1
+    serialization: kryo
+  registry:
+    address: nacos://120.24.149.53:8848
+
+server:
+  port: 9901
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+business:
+  oauth2:
+    grant_type: password
+    client_secret: secret
+    client_id: client
+
+# 开启feign的okhhtp方式
+feign:
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false

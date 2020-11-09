@@ -1,0 +1,22 @@
+server:
+  port: 0
+spring:
+  application:
+    name: myshp-plus-redis-server
+  redis:
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+    port: 6379
+    host: 192.168.75.134
+dubbo:
+  scan:
+    base-packages: com.hyorin.redis.service.serviceimpl
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://120.24.149.53:8848
